@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
-import 'product_model.dart';
 import 'cart_model.dart';
+import 'product_model.dart';
 
 class ListViewProducts extends StatelessWidget {
   final List<Product> _lsProducts;
+
   const ListViewProducts({
     Key? key,
     required List<Product> listProducts,
@@ -22,7 +23,10 @@ class ListViewProducts extends StatelessWidget {
                 context.go('/details', extra: _lsProducts[index]);
               },
               title: Text(_lsProducts[index].title),
-              subtitle: Text(_lsProducts[index].displayPriceInEuro()),
+              subtitle: Text(_lsProducts[index].displayPriceInEuro(),
+                  style: const TextStyle(
+                    color: Colors.blue,
+                  )),
               leading: Hero(
                 tag: _lsProducts[index].title,
                 child: Image.network(
@@ -38,6 +42,8 @@ class ListViewProducts extends StatelessWidget {
                 icon: const Icon(Icons.add_box),
                 color: Colors.blue,
               ),
-            ));
+              visualDensity: VisualDensity.adaptivePlatformDensity,
+            ),
+        padding: const EdgeInsets.symmetric(vertical: 15));
   }
 }

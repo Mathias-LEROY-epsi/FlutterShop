@@ -4,8 +4,8 @@ import 'package:provider/provider.dart';
 
 import 'cart_model.dart';
 import 'cart_page.dart';
-import 'list_product_page.dart';
 import 'details_page.dart';
+import 'list_product_page.dart';
 import 'product_model.dart';
 
 void main() {

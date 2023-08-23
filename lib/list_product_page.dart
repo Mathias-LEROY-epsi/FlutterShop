@@ -2,12 +2,12 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:provider/provider.dart';
 import 'package:http/http.dart' as http;
+import 'package:provider/provider.dart';
 
 import 'cart_model.dart';
-import 'product_model.dart';
 import 'list_view_products.dart';
+import 'product_model.dart';
 
 class ListProductPage extends StatelessWidget {
   const ListProductPage({Key? key}) : super(key: key);
@@ -32,8 +32,7 @@ class ListProductPage extends StatelessWidget {
                 child: Container(
                     width: 18,
                     height: 18,
-                    decoration: const BoxDecoration(
-                        shape: BoxShape.circle, color: Colors.red),
+                    decoration: const BoxDecoration(shape: BoxShape.circle, color: Colors.red),
                     child: Align(
                         alignment: Alignment.center,
                         child: Text("${context.watch<CartModel>().getCount()}",
@@ -48,9 +47,8 @@ class ListProductPage extends StatelessWidget {
           builder: (context, snapshot) {
             if (snapshot.hasData && snapshot.data != null) {
               List<dynamic> lsJsonProducts = jsonDecode(snapshot.data!.body);
-              List<Product> lsProducts = lsJsonProducts
-                  .map((element) => Product.fromJson(element))
-                  .toList();
+              List<Product> lsProducts =
+                  lsJsonProducts.map((element) => Product.fromJson(element)).toList();
               return ListViewProducts(listProducts: lsProducts);
             } else if (snapshot.hasError) {
               return const Text("Impossible de récupérer des infos...");
